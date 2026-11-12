@@ -13,7 +13,7 @@ function ViewUsers() {
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [users]);
 
   return (
     <div className="container mt-4">

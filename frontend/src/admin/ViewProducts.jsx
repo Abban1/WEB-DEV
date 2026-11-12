@@ -11,7 +11,7 @@ function ViewProducts() {
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [products]);
 
   return (
     <div className="container mt-4">
