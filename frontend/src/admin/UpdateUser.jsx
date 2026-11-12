@@ -30,7 +30,7 @@ function UpdateUser() {
           <div className="mb-3">
             <label className="form-label">User ID</label>
             <input
-              type="number"
+              type="text"
               name="userId"
               className="form-control"
               placeholder="Enter user ID"

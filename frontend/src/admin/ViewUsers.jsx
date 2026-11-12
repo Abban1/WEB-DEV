@@ -1,6 +1,20 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function ViewUsers() {
+  const [users, setUsers] = useState([]);
+
+  const getUsers = async () => {
+    const response = await axios.get("http://localhost:5000/admin");
+
+    setUsers(response.data);
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
     <div className="container mt-4">
       <h2>View Users</h2>
@@ -11,21 +25,20 @@ function ViewUsers() {
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
-            <th>Actions</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td>
-              <button type="button" className="btn btn-warning btn-sm me-2">
-                Update
-              </button>
-              <button type="button" className="btn btn-danger btn-sm">
-                Delete
-              </button>
-            </td>
-          </tr>
+          {users.map((user) => (
+            <tr key={user._id}>
+              <td>{user._id}</td>
+              <td>{user.username}</td>
+              <td>{user.email}</td>
+
+              <td>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
